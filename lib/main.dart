@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int counter = 1;
-  var widgets;
+  List<Widget> data = [];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text('Tambah Data'),
                     onPressed: () {
                       setState(() {
-                        widgets.add(Text('Data ke =' + counter.toString()));
+                        data.add(Text('Data ke =' + counter.toString()));
                         counter++;
                       });
                     }),
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text('Hapus Data'),
                     onPressed: () {
                       setState(() {
-                        widgets.add(Text('Data ke =' + counter.toString()));
+                        data.removeLast();
                         counter--;
                       });
                     })
@@ -44,10 +44,8 @@ class _MyAppState extends State<MyApp> {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                widgets,
-              ],
-            )
+              children: data,
+            ),
           ],
         ),
       ),
